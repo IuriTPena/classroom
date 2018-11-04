@@ -20,10 +20,8 @@ public class ClassroomRepositoryOnline implements IClassroomRepository {
 
     @PersistenceContext(unitName = "primary")
     private EntityManager manager;
-
     @Inject
     private ITraineeRepository traineeRepo;
-
     @Inject
     private JSONUtil jsonConverter;
 
@@ -46,7 +44,6 @@ public class ClassroomRepositoryOnline implements IClassroomRepository {
     }
 
     @Override
-    @Transactional(SUPPORTS)
     public String retrieveClassroom(Long classroomId) {
         Classroom classroom = findClassroom(classroomId);
         return jsonConverter.getJSONForObject(classroom);
